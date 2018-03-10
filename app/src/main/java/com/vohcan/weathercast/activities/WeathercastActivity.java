@@ -1,7 +1,9 @@
-package com.vohcan.weathercast;
+package com.vohcan.weathercast.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.vohcan.weathercast.R;
 
 public class WeathercastActivity extends AppCompatActivity {
 
