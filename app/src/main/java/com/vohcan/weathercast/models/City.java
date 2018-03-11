@@ -62,6 +62,11 @@ public class City {
     public void setLatitude(float latitude) {
         this.latitude = latitude;
     }
+
+    @Override
+    public String toString() {
+        return getCityName();
+    }
 }
 
 

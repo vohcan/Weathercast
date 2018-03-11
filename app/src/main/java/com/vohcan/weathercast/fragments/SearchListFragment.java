@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -18,6 +19,8 @@ import com.vohcan.weathercast.models.City;
  */
 
 public class SearchListFragment extends Fragment {
+
+    private OnCitySelectedListener onCitySelectedListener;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -29,7 +32,7 @@ public class SearchListFragment extends Fragment {
 
         //create model cities
 
-        Cities cities = new Cities();
+        final Cities cities = new Cities();
 
         //create adapter
 
@@ -37,9 +40,27 @@ public class SearchListFragment extends Fragment {
 
         list.setAdapter(adapter);
 
+        //make a listener
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                if(onCitySelectedListener != null){
+                    onCitySelectedListener.onCitySelected(cities.getCity(position));
+                }
 
 
+            }
+        });
 
         return root;
+    }
+
+    public void setOnCitySelectedListener(OnCitySelectedListener onCitySelectedListener) {
+        this.onCitySelectedListener = onCitySelectedListener;
+    }
+
+    public interface OnCitySelectedListener{
+
+        void onCitySelected(City city);
     }
 }

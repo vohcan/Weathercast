@@ -20,4 +20,12 @@ public class Cities {
     public LinkedList<City> getCities() {
         return cities;
     }
+
+    public City  getCity(int position) {
+        return cities.get(position);
+    }
+
+    public int getCount(){
+        return cities.size();
+    }
 }
